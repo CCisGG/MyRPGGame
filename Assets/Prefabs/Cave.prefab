@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59aae079fd104c04b5f169c31329a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
   sceneName: AnotherScene
 --- !u!212 &212640381475193070
 SpriteRenderer:
