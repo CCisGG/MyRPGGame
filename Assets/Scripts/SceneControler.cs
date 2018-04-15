@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneControler : MonoBehaviour {
 
-	public int index;
 	public string sceneName;
 
+	// Change scene when collide
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.CompareTag ("Player")) {
-			SceneManager.LoadScene ("AnotherScene");
+			SceneManager.LoadScene (sceneName);
 		}
 	}
 }
