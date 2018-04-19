@@ -46,6 +46,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		return items.Count == 0; 
 	}
 
+	public Stack<Item> GetItems() {
+		return this.items;
+	}
+
 	// Return if the slots could still filled in same items.
 	public bool IsAvailable() {
 		return GetCurrentItem().maxSize > items.Count;
@@ -65,11 +69,26 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		ChangeSprite (item.spriteNeutral, item.spriteHighlighted);
 	}
 
+
+	public void AddItems(Stack<Item> items) {
+		this.items = new Stack<Item>(items);
+
+		stackText.text = items.Count > 1 ? items.Count.ToString () : string.Empty;
+
+		ChangeSprite (GetCurrentItem().spriteNeutral, GetCurrentItem().spriteHighlighted);
+	}
+
 	// Action taken when mouse click
 	public void OnPointerClick(PointerEventData eventData) {
-		if (eventData.button == PointerEventData.InputButton.Left) {
+		if (eventData.button == PointerEventData.InputButton.Right) {
 			UseItem ();
 		}
+	}
+
+	public void ClearSlot() {
+		items.Clear ();
+		ChangeSprite (slotEmpty, slotHighlighted);
+		stackText.text = string.Empty;
 	}
 
 	// Change the image of the slot.
