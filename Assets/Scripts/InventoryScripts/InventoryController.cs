@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour {
 
@@ -22,6 +23,8 @@ public class InventoryController : MonoBehaviour {
 	private List<GameObject> allSlots;
 
 	private static int emptySlots;
+
+	private Slot fromSlot, toSlot;
 
 	public static int EmptySlots {
 		get { return emptySlots; }
@@ -99,6 +102,42 @@ public class InventoryController : MonoBehaviour {
 		}
 
 		return true;
+	}
+
+	// Move item by click. 
+	// Note: In Unity page, should add the this controller and this function to click-list; 
+	public void MoveItem(GameObject clicked) {
+		
+		if (fromSlot == null) {
+			Debug.Log ("fromSlot == null");
+			if (!clicked.GetComponent<Slot> ().IsEmpty ()) {
+				fromSlot = clicked.GetComponent<Slot> ();
+				fromSlot.GetComponent<Image> ().color = Color.gray;
+
+			}
+		} else if (toSlot == null) {
+			Debug.Log ("toSlot == null");
+			toSlot = clicked.GetComponent<Slot> ();
+		} 
+
+		if (fromSlot != null && toSlot != null){
+			Debug.Log ("both != null");
+			Stack<Item> tmpToSlot = new Stack<Item> (toSlot.GetItems ());
+			toSlot.AddItems (fromSlot.GetItems());
+
+			if (tmpToSlot.Count == 0) {
+				fromSlot.ClearSlot ();
+			} else {
+				fromSlot.AddItems (tmpToSlot);
+			}
+
+			fromSlot.GetComponent<Image> ().color = Color.white;
+			toSlot = null;
+			fromSlot = null;
+		}
+
+
+
 	}
 
 	// Place an item to an empty slot (Traverse and find empty slots). 
