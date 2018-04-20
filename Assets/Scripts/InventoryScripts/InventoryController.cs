@@ -31,17 +31,17 @@ public class InventoryController : MonoBehaviour {
 		set { emptySlots = value; }
 	}
 
-	// Use this for initialization
+	// Start: create the layout.
 	void Start () {
 		CreateLayout ();
 	}
 
-	// Update is called once per frame
+	// Update: is called once per frame
 	void Update () {
 
 	}
 
-	// Setup the layout for inventory and slots. 
+	// CreateLayout: Setup the layout for inventory and slots. 
 	private void CreateLayout() {
 		emptySlots = slots;
 
@@ -80,8 +80,9 @@ public class InventoryController : MonoBehaviour {
 
 	}
 
+	// AddItem: add the item to this inventory.
 	public bool AddItem(Item item) {
-		if (item.maxSize == 1) {
+		if (!item.IsStackable()) {
 			PlaceEmpty (item);
 		} else {
 
@@ -104,8 +105,8 @@ public class InventoryController : MonoBehaviour {
 		return true;
 	}
 
-	// Move item by click. 
-	// Note: In Unity page, should add the this controller and this function to click-list; 
+	// MoveItem: Move item by click. 
+	// 			Note: In Unity page, should add the this controller and this function to click-list; 
 	public void MoveItem(GameObject clicked) {
 		
 		if (fromSlot == null) {
@@ -140,7 +141,7 @@ public class InventoryController : MonoBehaviour {
 
 	}
 
-	// Place an item to an empty slot (Traverse and find empty slots). 
+	// PlaceEmpty: Place an item to an empty slot (Traverse and find empty slots). 
 	private bool PlaceEmpty(Item item) {
 		if (emptySlots > 0) {
 			foreach (GameObject slot in allSlots) {
