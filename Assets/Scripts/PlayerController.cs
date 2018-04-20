@@ -18,16 +18,16 @@ public class PlayerController : MonoBehaviour {
 		// Accept the move signal from keyboard "input", and move the position
 		this.transform.position = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0 ) + this.transform.position;
 	
-		DetectSpace ();
+		DetectPickUpAction ();
 	}
 
-	// Pick up items on Tab Space.
-	private bool DetectSpace() {
-		if (Input.GetKey(KeyCode.Space)) {
+	// Pick up items on tab Space.
+	private bool DetectPickUpAction() {
+		if (Input.GetKeyDown(KeyCode.Space)) {
 			GameObject item = findClosestObject ("Item");
-
 			if (item != null) 
 				inventory.AddItem (item.GetComponent<Item>());
+//			GameObject.Destroy (item);
 			return true;
 		}
 		return false;
