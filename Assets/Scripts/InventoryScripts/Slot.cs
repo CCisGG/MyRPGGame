@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿// Author: Hao Geng
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,24 +43,27 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 
 	}
 
-	// Return if the slot has no items.
+	// IsEmpty: Return if the slot has no items.
 	public bool IsEmpty() {
 		return items.Count == 0; 
 	}
 
+	// GetItems: return the whole stack for the item.
 	public Stack<Item> GetItems() {
 		return this.items;
 	}
 
-	// Return if the slots could still filled in same items.
+	// IsAvailable: Return if the slots could still filled in same items.
 	public bool IsAvailable() {
-		return GetCurrentItem().maxSize > items.Count;
+		return GetCurrentItem().GetMaxSize() > items.Count;
 	}
 
+	// GetCurrentItem: return the current item of this slot.
 	public Item GetCurrentItem() {
 		return items.Peek ();
 	}
 
+	// AddItem: add a single item to this slot.
 	public void AddItem(Item item) {
 		items.Push (item);
 
@@ -68,8 +73,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 
 		ChangeSprite (item.spriteNeutral, item.spriteHighlighted);
 	}
-
-
+		
+	// AddItems: add a stack of items to this slot.
 	public void AddItems(Stack<Item> items) {
 		this.items = new Stack<Item>(items);
 
@@ -78,20 +83,21 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		ChangeSprite (GetCurrentItem().spriteNeutral, GetCurrentItem().spriteHighlighted);
 	}
 
-	// Action taken when mouse click
+	// OnPointerClick: Action taken when right-click the mouse.
 	public void OnPointerClick(PointerEventData eventData) {
 		if (eventData.button == PointerEventData.InputButton.Right) {
 			UseItem ();
 		}
 	}
 
+	// ClearSlot: empty this slot.
 	public void ClearSlot() {
 		items.Clear ();
 		ChangeSprite (slotEmpty, slotHighlighted);
 		stackText.text = string.Empty;
 	}
 
-	// Change the image of the slot.
+	// ChangeSprite: Change the image of the slot.
 	private void ChangeSprite(Sprite spriteNeutral, Sprite spriteHighlighted) {
 		GetComponent<Image> ().sprite = spriteNeutral;
 
@@ -101,7 +107,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 
 		GetComponent<Button> ().spriteState = st;
 	}
-		
+
+	// UseItem: use the item
 	private void UseItem() {
 		// Return if there is no item in this slot.
 		if (IsEmpty ())
