@@ -63,7 +63,6 @@ public abstract class Item : MonoBehaviour, ItemInterface {
 		}
 
 		isSoldable = isStackable;
-		Debug.Log (isStackable);
 	}
 
 	// How to use the Item, should be defined in every child classes
