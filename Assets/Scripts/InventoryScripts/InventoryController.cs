@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿// Author: Hao Geng
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -146,8 +148,9 @@ public class InventoryController : MonoBehaviour {
 		if (emptySlots > 0) {
 			foreach (GameObject slot in allSlots) {
 				Slot tmp = slot.GetComponent <Slot>();
-				if (tmp.IsEmpty ()) {
 
+				if (tmp.IsEmpty ()) {
+					Debug.Log ("Placing empty: " + item);
 					tmp.AddItem (item);
 
 					emptySlots--;

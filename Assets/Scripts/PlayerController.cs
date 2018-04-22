@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour {
 	private bool DetectPickUpAction() {
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			GameObject item = findClosestObject ("Item");
-			if (item != null) 
+			if (item != null)
+				Debug.Log (item.GetComponent<Item>());
 				inventory.AddItem (item.GetComponent<Item>());
 //			GameObject.Destroy (item);
 			return true;

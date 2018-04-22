@@ -17,10 +17,17 @@ public enum ItemType {
 	Weapon,
 }; 
 
+interface ItemInterface {
+	// How to use the Item, should be defined in every child classes
+	void Use ();
+}
 
-public class Item : MonoBehaviour {
+
+public abstract class Item : MonoBehaviour, ItemInterface {
 
 	public ItemType type;
+
+	public int price;
 
 	// The image display in normal condition.
 	public Sprite spriteNeutral;
@@ -29,38 +36,38 @@ public class Item : MonoBehaviour {
 	public Sprite spriteHighlighted;
 
 	// Whether the item could be stacked together or not.
-	private bool isStackable;
+	protected bool isStackable;
+
+	// Whether the item could be sold (or delete).
+	private bool isSoldable;
 
 	// Max size of the item.
 	private int maxSize = 30;
 
 	// Start: initialize "isStackable" in terms of type.
 	void Start() {
-		switch (type) {
-			case ItemType.Weapon:
-			case ItemType.Tool:
-			case ItemType.Furniture:
-			case ItemType.OtherNonStackable:
-				isStackable = false;
-				break;
-			default:
-				isStackable = true;
-				break;
-		}
+		Initialize ();
 	}
 
-	// Use: use the item. 
-	public void Use() {
+	public void Initialize() {
 		switch (type) {
-			case ItemType.Medicine:
-				Debug.Log ("health item");
-				GameController.gameController.health += 10;
-				break;
-			case ItemType.Weapon:
-				Debug.Log("Weapon item");
-				break;
+		case ItemType.Weapon:
+		case ItemType.Tool:
+		case ItemType.Furniture:
+		case ItemType.OtherNonStackable:
+			isStackable = false;
+			break;
+		default:
+			isStackable = true;
+			break;
 		}
+
+		isSoldable = isStackable;
+		Debug.Log (isStackable);
 	}
+
+	// How to use the Item, should be defined in every child classes
+	public abstract void Use ();
 
 	// GetMaxSize: get max stackable size for the item.
 	public int GetMaxSize() {
