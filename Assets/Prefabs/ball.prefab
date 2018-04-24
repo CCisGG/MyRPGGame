@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212404565018968370}
   - component: {fileID: 50294671429532364}
   - component: {fileID: 61940891684976710}
-  - component: {fileID: 114631071409908030}
+  - component: {fileID: 114991755029119298}
   m_Layer: 0
   m_Name: ball
   m_TagString: Untagged
@@ -88,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
---- !u!114 &114631071409908030
+--- !u!114 &114991755029119298
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453a879a8fe924c15b681077e8e78d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 1498102161215256, guid: 2f6e2fb6817b942ea83e902de765d20f, type: 2}
 --- !u!212 &212404565018968370
 SpriteRenderer:
   m_ObjectHideFlags: 1

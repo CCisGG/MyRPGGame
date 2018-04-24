@@ -152,7 +152,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114175663394136320, guid: 647c0eb2c96e449389cc4da966512219, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 647c0eb2c96e449389cc4da966512219, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &305086988 stripped
@@ -160,6 +161,20 @@ GameObject:
   m_PrefabParentObject: {fileID: 1378193902208812, guid: 647c0eb2c96e449389cc4da966512219,
     type: 2}
   m_PrefabInternal: {fileID: 109727158}
+--- !u!114 &305086990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 305086988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ade54e18240041bc80d71f13d357520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  player_ball: {fileID: 1894952620050140, guid: cca12ab8336c548b3a7cb71c0e1480a0,
+    type: 2}
 --- !u!1001 &823596107
 Prefab:
   m_ObjectHideFlags: 0
@@ -623,7 +638,7 @@ GameObject:
   - component: {fileID: 2006639793}
   m_Layer: 0
   m_Name: monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
