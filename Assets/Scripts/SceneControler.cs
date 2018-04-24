@@ -8,7 +8,7 @@ public class SceneControler : MonoBehaviour {
 
 	public string sceneName;
 
-	// Change scene on collision
+	// Change scene when collide
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.CompareTag ("Player")) {
 			SceneManager.LoadScene (sceneName);
