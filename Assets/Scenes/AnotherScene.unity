@@ -639,6 +639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a93eb5c77b94612a8e6937992f884b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  ball: {fileID: 1684734740928392, guid: 2269340afc6684a5484f0dbbe86ae56a, type: 2}
 --- !u!212 &2006639794
 SpriteRenderer:
   m_ObjectHideFlags: 0
