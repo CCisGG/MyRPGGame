@@ -22,7 +22,7 @@ interface ItemInterface {
 	void Use ();
 }
 
-
+// Abstract parent class Item
 public abstract class Item : MonoBehaviour, ItemInterface {
 
 	public ItemType type;

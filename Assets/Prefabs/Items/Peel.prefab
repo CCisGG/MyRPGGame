@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212351120390824676}
   - component: {fileID: 50382343112095536}
   - component: {fileID: 61365836575321978}
-  - component: {fileID: 114024346893849586}
+  - component: {fileID: 114462168275703590}
   m_Layer: 0
   m_Name: Peel
   m_TagString: Item
@@ -88,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.61, y: 7.6}
   m_EdgeRadius: 0
---- !u!114 &114024346893849586
+--- !u!114 &114462168275703590
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,12 +96,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1693582076847094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 820ecdeab80b54abbb982853b7afefbd, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d7dbda122c514b9ab6b738e358521d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 10
+  price: 0
   spriteNeutral: {fileID: 21300000, guid: f649edfc0706242a9a390fcb51a0d85b, type: 3}
   spriteHighlighted: {fileID: 21300000, guid: f649edfc0706242a9a390fcb51a0d85b, type: 3}
+  addHealth: 10
 --- !u!212 &212351120390824676
 SpriteRenderer:
   m_ObjectHideFlags: 1
