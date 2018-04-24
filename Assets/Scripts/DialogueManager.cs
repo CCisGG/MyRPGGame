@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour {
 		}
 	}
 
-	public void ShowBox(Dialogue dialogue) {
+	public void ShowBox(string dialogue) {
 		dialogueActive = true;
 		dialogueBox.SetActive (true);
 		dialogueText.text = dialogue;
