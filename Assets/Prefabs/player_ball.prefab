@@ -9,47 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1684734740928392}
+  m_RootGameObject: {fileID: 1894952620050140}
   m_IsPrefabParent: 1
---- !u!1 &1684734740928392
+--- !u!1 &1894952620050140
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4603314457151370}
-  - component: {fileID: 212404565018968370}
-  - component: {fileID: 50294671429532364}
-  - component: {fileID: 61940891684976710}
-  - component: {fileID: 114631071409908030}
+  - component: {fileID: 4678752436060456}
+  - component: {fileID: 212983818978459000}
+  - component: {fileID: 50745203740060804}
+  - component: {fileID: 61186488052105684}
   m_Layer: 0
-  m_Name: ball
+  m_Name: player_ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4603314457151370
+--- !u!4 &4678752436060456
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1684734740928392}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.92, y: -0.76, z: 2}
-  m_LocalScale: {x: 0.2601295, y: 0.2752878, z: 1}
+  m_GameObject: {fileID: 1894952620050140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.38, y: -1.96, z: 0}
+  m_LocalScale: {x: 0.30855718, y: 0.3367953, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!50 &50294671429532364
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50745203740060804
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1684734740928392}
+  m_GameObject: {fileID: 1894952620050140}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -63,12 +62,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61940891684976710
+--- !u!61 &61186488052105684
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1684734740928392}
+  m_GameObject: {fileID: 1894952620050140}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -79,32 +78,21 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
-    newSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 2.67, y: 2.46}
+    newSize: {x: 2.67, y: 2.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 2.67, y: 2.46}
   m_EdgeRadius: 0
---- !u!114 &114631071409908030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1684734740928392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 453a879a8fe924c15b681077e8e78d03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!212 &212404565018968370
+--- !u!212 &212983818978459000
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1684734740928392}
+  m_GameObject: {fileID: 1894952620050140}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -133,12 +121,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 6e19a0192fe6f45b0abfc6a1ceae76cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ee8a23d50eaf1430ab8602ffeafb19b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 2.67, y: 2.46}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

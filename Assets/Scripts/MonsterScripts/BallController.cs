@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class BallController : MonoBehaviour {
 
 	// Use this for initialization
+	public GameObject explosion;
 	void Start () {
-
 	}
 	
 	// Update is called once per frame
@@ -23,7 +23,9 @@ public class BallController : MonoBehaviour {
 			} else {
 				GameController.gameController.health = 0;
 			}
-			GameObject.Destroy(gameObject);
+			GameObject explosions = Instantiate (explosion, transform.position, transform.rotation) as GameObject;
+			GameObject.Destroy (gameObject);
+			GameObject.Destroy (explosions, 0.1f);
 		}
 		
 	}
