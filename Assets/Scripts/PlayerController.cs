@@ -41,4 +41,6 @@ public class PlayerController : MonoBehaviour {
 			//			GameObject.Destroy (item);
 		}
 	}
+
+
 }
