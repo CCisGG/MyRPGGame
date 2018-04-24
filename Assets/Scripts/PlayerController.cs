@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
 
 	public InventoryController inventory;
 
+	private Collider2D overlapItem;
+
 	// Use this for initialization
 	public GameObject player_ball;
 	private float nextFire;
@@ -39,37 +41,27 @@ public class PlayerController : MonoBehaviour {
 		}
 		this.transform.position = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0 ) + this.transform.position;
 	
-		DetectPickUpAction ();
+		// Only allow one single item in specific range
+		DetectPickUp ();
 	}
 
-	// Pick up items on tab Space.
-	private bool DetectPickUpAction() {
+	void OnTriggerEnter2D (Collider2D other) {
+		overlapItem = other;
+	}
+
+	void OnTriggerExit2D (Collider2D other) {
+		overlapItem = null;
+	}
+
+	public void DetectPickUp() {
+		if (overlapItem == null || !overlapItem.CompareTag ("Item"))
+			return;
 		if (Input.GetKeyDown(KeyCode.Space)) {
-			GameObject item = findClosestObject ("Item");
-			if (item != null)
-				Debug.Log (item.GetComponent<Item>());
-				inventory.AddItem (item.GetComponent<Item>());
-//			GameObject.Destroy (item);
-			return true;
+			Debug.Log ("Picking up " + overlapItem.GetComponent<Item> ());
+			inventory.AddItem (overlapItem.GetComponent<Item> ());
+			//			GameObject.Destroy (item);
 		}
-		return false;
 	}
 
-	public GameObject findClosestObject(string tag) {
-		GameObject[] gameObjects = GameObject.FindGameObjectsWithTag (tag);
-		GameObject closestObject = null;
-		float minDist = 5;
 
-		foreach (GameObject obj in gameObjects) {
-			float dist = Vector3.Distance (obj.transform.position, gameObject.transform.position);
-
-			if (dist < minDist ) {
-				minDist = dist;
-				closestObject = obj;
-			}
-		}
-
-
-		return closestObject;
-	}
 }
