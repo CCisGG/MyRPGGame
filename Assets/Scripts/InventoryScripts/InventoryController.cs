@@ -35,7 +35,6 @@ public class InventoryController : MonoBehaviour {
 
 	// Start: create the layout.
 	void Start () {
-		DontDestroyOnLoad (this.gameObject);
 		CreateLayout ();
 	}
 
