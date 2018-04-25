@@ -11,13 +11,34 @@ public class PlayerController : MonoBehaviour {
 	private Collider2D overlapItem;
 
 	// Use this for initialization
+	public GameObject player_ball;
+	private float nextFire;
+	private Vector3 direction;
+	private float attackSpeed;
 	void Start () {
-		
+		attackSpeed = 10f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		// Accept the move signal from keyboard "input", and move the position
+		if (Input.GetButton ("Fire1") && Time.time > nextFire) {
+			nextFire = Time.time + 0.5f;
+			GameObject player_balls = Instantiate (player_ball, transform.position, transform.rotation) as GameObject;
+			player_balls.GetComponent<Rigidbody2D> ().velocity = direction * attackSpeed;
+			if (player_balls != null) {
+				Destroy (player_balls, 2);
+			}
+		}
+		if (Input.GetAxis ("Horizontal") > 0) {
+			direction = new Vector3(1, 0, 0);
+		} else if (Input.GetAxis ("Horizontal") < 0) {
+			direction = new Vector3(-1, 0, 0);
+		} else if (Input.GetAxis ("Vertical") > 0) {
+			direction = new Vector3(0, 1, 0);
+		} else if (Input.GetAxis ("Vertical") < 0) {
+			direction = new Vector3(0, -1, 0);
+		}
 		this.transform.position = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0 ) + this.transform.position;
 	
 		// Only allow one single item in specific range

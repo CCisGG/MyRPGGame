@@ -152,7 +152,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114175663394136320, guid: 647c0eb2c96e449389cc4da966512219, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 647c0eb2c96e449389cc4da966512219, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &305086988 stripped
@@ -160,6 +161,20 @@ GameObject:
   m_PrefabParentObject: {fileID: 1378193902208812, guid: 647c0eb2c96e449389cc4da966512219,
     type: 2}
   m_PrefabInternal: {fileID: 109727158}
+--- !u!114 &305086990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 305086988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ade54e18240041bc80d71f13d357520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  player_ball: {fileID: 1894952620050140, guid: cca12ab8336c548b3a7cb71c0e1480a0,
+    type: 2}
 --- !u!1001 &823596107
 Prefab:
   m_ObjectHideFlags: 0
@@ -618,12 +633,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2006639795}
   - component: {fileID: 2006639794}
-  - component: {fileID: 2006639793}
   - component: {fileID: 2006639796}
   - component: {fileID: 2006639797}
+  - component: {fileID: 2006639793}
   m_Layer: 0
   m_Name: monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -636,10 +651,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2006639792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89a93eb5c77b94612a8e6937992f884b, type: 3}
+  m_Script: {fileID: 11500000, guid: 737244ab978d6473fb839da40e5fae51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  nextAttack: 0
+  attackRate: 0
+  attackSpeed: 0
   ball: {fileID: 1684734740928392, guid: 2269340afc6684a5484f0dbbe86ae56a, type: 2}
 --- !u!212 &2006639794
 SpriteRenderer:
@@ -692,8 +710,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2006639792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.864, y: -3.026, z: 0}
-  m_LocalScale: {x: 0.37969023, y: 0.3675811, z: 1}
+  m_LocalPosition: {x: 18.883, y: -3.026, z: 0}
+  m_LocalScale: {x: 0.3869821, y: 0.3675811, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -729,7 +747,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -741,7 +759,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 4.12, y: 4.22}
   m_EdgeRadius: 0
 --- !u!1001 &2136524678
 Prefab:

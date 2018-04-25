@@ -3,33 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MonsterController : MonoBehaviour {
+public class PurpleMonsterController : MonsterController {
 
 	// Use this for initialization
-	public GameObject player;
 	public GameObject ball;
-	private float nextAttack;
-	private float attackRate;
-	private float attackSpeed;
 	private bool startAttack;
+	private int touchHurt;
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Player");
-		nextAttack = Time.time;
-		attackRate = 1.5f;
-		attackSpeed = 2.5f;
+		base.nextAttack = Time.time;
+		base.attackRate = 1.5f;
+		base.attackSpeed = 2.5f;
+		touchHurt = 30;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		// Accept the move signal from keyboard "input", and move the position
-		//GameObject player = GameObject.FindGameObjectWithTag("Player");
-		if (startAttack && Time.time > nextAttack) {
-			nextAttack = Time.time + attackRate;
-			GameObject balls = Instantiate (ball, transform.position, transform.rotation)as GameObject;
-			Vector3 direction = (player.transform.position - this.transform.position);
-			balls.GetComponent<Rigidbody2D> ().velocity = direction * attackSpeed;
-			Destroy (balls, 2);
+	void attack() {
+		if (startAttack) {
+			base.remoteAttack (ball);
 		}
+	}
+
+	void Update () {
+		// Move and attack
+		attack();
 		Vector3 player_position = player.transform.position;
 		Vector3 position = this.transform.position;
 		float x_abs = System.Math.Abs (player_position.x - position.x);
@@ -55,12 +52,6 @@ public class MonsterController : MonoBehaviour {
 
 	// Hurt player.
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.CompareTag ("Player")) {
-			if (GameController.gameController.health >= 30) {
-				GameController.gameController.health -= 30;
-			} else {
-				GameObject.Destroy(player);
-			}
-		}
+		base.OnTriggerEnter2D(other,touchHurt);
 	}
 }
