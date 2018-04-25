@@ -76,6 +76,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		
 	// AddItems: add a stack of items to this slot.
 	public void AddItems(Stack<Item> items) {
+		if (items.Count == 0)
+			return;
 		this.items = new Stack<Item>(items);
 
 		stackText.text = items.Count > 1 ? items.Count.ToString () : string.Empty;
@@ -121,5 +123,14 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 			ChangeSprite (slotEmpty, slotHighlighted);
 			Inventory.EmptySlots++;
 		}
+	}
+
+	public override string ToString() {
+		Item item = null;
+		if (items.Count != 0) {
+			item = GetCurrentItem ();
+			return "Slot contains item " + item + " * " + items.Count; 
+		}
+		return "Slot is empty";
 	}
 }

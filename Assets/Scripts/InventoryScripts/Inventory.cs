@@ -47,14 +47,25 @@ public class Inventory : MonoBehaviour {
 
 	}
 
+	public String ToString() {
+		if (InventoryController.GetInventoryController ().HoldingSlots == null) {
+			return "Null holding slots";
+		}
+		String res = "";
+		for (int i = 0; i < slotCount; i++) {
+			res += " |slot " + i + ": ";
+			if (i < InventoryController.GetInventoryController ().HoldingSlots.Count) {
+				res += InventoryController.GetInventoryController ().HoldingSlots [i].ToString ();
+			}
+		}
+		return res;
+	}
+
 	// CreateLayout: Setup the layout for inventory and slots. 
 	private void CreateLayout() {
-		Debug.Log ("Holding slots");
+		Debug.Log (ToString());
 		emptySlots = slotCount;
 
-		if (InventoryController.GetInventoryController ().HoldingSlots == null) {
-			InventoryController.GetInventoryController().HoldingSlots = new List<GameObject> ();
-		}
 		inventoryWidth = (slotCount / rows) * (slotSize + slotPaddingLeft) + slotPaddingLeft;
 		inventoryHeight = rows * (slotSize + slotPaddingTop) + slotPaddingTop;
 		inventoryRect = GetComponent<RectTransform> ();
@@ -64,21 +75,24 @@ public class Inventory : MonoBehaviour {
 
 		int columns = slotCount / rows;
 
+		List<Slot> newHoldingSlots = new List<Slot> ();
+
 		int currentCount = 0;
 		for (int y = 0; y < rows; y++) {
 			for (int x = 0; x < columns; x++) {
 				GameObject slotObject =	(GameObject) Instantiate (InventoryController.GetInventoryController().slotPrefab);
 
-//				if (InventoryController.GetInventoryController ().HoldingSlots.Count != slotCount) {
-//					// Inventory and Slots Existed: 
-//					// The "SLOT object (NOT game object)" should be fetched from slot controller
-//					slot = InventoryController.GetInventoryController ().HoldingSlots [currentCount];
-//				} else {
-				InventoryController.GetInventoryController().HoldingSlots.Add (slotObject);
-//				}
+				if (InventoryController.GetInventoryController ().HoldingSlots != null) {
+					// Inventory and Slots Existed: 
+					// The "SLOT object (NOT game object)" should be fetched from slot controller
+
+					Slot newSlot = slotObject.GetComponent<Slot> ();
+					Slot oldSlot = InventoryController.GetInventoryController ().HoldingSlots[currentCount];
+					newSlot.AddItems (oldSlot.GetItems());
+				}
 
 
-
+				newHoldingSlots.Add (slotObject.GetComponent<Slot>());
 
 
 				slotObject.name = "Slot" + currentCount;
@@ -98,7 +112,7 @@ public class Inventory : MonoBehaviour {
 
 			}
 		}
-
+		InventoryController.GetInventoryController().HoldingSlots = newHoldingSlots;
 	}
 
 	// AddItem: add the item to this inventory.
@@ -109,11 +123,11 @@ public class Inventory : MonoBehaviour {
 
 			// Check if any slots has the same item with the current one.
 			// If so, stack them together in one slot.
-			foreach (GameObject slot in InventoryController.GetInventoryController().HoldingSlots) {
-				Slot tmp = slot.GetComponent<Slot> ();
-				if (!tmp.IsEmpty ()) {
-					if (tmp.GetCurrentItem ().type == item.type && tmp.IsAvailable ()) {
-						tmp.AddItem (item);
+			foreach (Slot slot in InventoryController.GetInventoryController().HoldingSlots) {
+				if (!slot.IsEmpty ()) {
+					if (slot.GetCurrentItem ().type == item.type && slot.IsAvailable ()) {
+						slot.AddItem (item);
+						Debug.Log (ToString());
 						return true;
 					}
 				}
@@ -122,7 +136,7 @@ public class Inventory : MonoBehaviour {
 			// Cannot find any available same-item slots, place item to a new slot.
 			PlaceEmpty (item);
 		}
-
+		Debug.Log (ToString());
 		return true;
 	}
 
@@ -163,14 +177,11 @@ public class Inventory : MonoBehaviour {
 
 	// PlaceEmpty: Place an item to an empty slot (Traverse and find empty slots). 
 	private bool PlaceEmpty(Item item) {
-		Debug.Log ("Check emptySlots: " + emptySlots + " all slots "
-			+ InventoryController.GetInventoryController().HoldingSlots + " " + InventoryController.GetInventoryController().HoldingSlots.Count );
 		if (emptySlots > 0) {
-			foreach (GameObject slot in InventoryController.GetInventoryController().HoldingSlots) {
-				Slot tmp = slot.GetComponent <Slot>();
-				if (tmp.IsEmpty ()) {
+			foreach (Slot slot in InventoryController.GetInventoryController().HoldingSlots) {
+				if (slot.IsEmpty ()) {
 					Debug.Log ("Placing empty: " + item);
-					tmp.AddItem (item);
+					slot.AddItem (item);
 
 					emptySlots--;
 					return true;

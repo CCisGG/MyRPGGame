@@ -44,6 +44,13 @@ public abstract class Item : MonoBehaviour, ItemInterface {
 	// Max size of the item.
 	private int maxSize = 30;
 
+//	public Item(Item item) {
+//		type = item.type;
+//		price = item.price;
+//		spriteNeutral = item.spriteNeutral;
+//		spriteHighlighted = item.spriteHighlighted;
+//	}
+
 	// Start: initialize "isStackable" in terms of type.
 	void Start() {
 		Initialize ();
