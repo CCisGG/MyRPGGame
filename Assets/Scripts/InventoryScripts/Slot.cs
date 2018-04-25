@@ -119,7 +119,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 
 		if (IsEmpty ()) {
 			ChangeSprite (slotEmpty, slotHighlighted);
-			InventoryController.EmptySlots++;
+			Inventory.EmptySlots++;
 		}
 	}
 }

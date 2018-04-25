@@ -6,7 +6,7 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour {
 
-	public InventoryController inventory;
+	public Inventory inventory;
 
 	private Collider2D overlapItem;
 
