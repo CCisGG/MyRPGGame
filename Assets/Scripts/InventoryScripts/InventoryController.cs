@@ -34,6 +34,13 @@ public class InventoryController : MonoBehaviour {
 
 	public GameObject toopTip;
 
+	private List<GameObject> holdingSlots;
+
+	public List<GameObject> HoldingSlots {
+		get { return holdingSlots; }
+		set { holdingSlots = value; }
+	}
+
 	public static InventoryController GetInventoryController() {
 		if (inventoryController == null) {
 			inventoryController = FindObjectOfType<InventoryController> ();
