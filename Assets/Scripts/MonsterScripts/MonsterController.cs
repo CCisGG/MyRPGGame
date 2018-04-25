@@ -10,6 +10,7 @@ public abstract class MonsterController : MonoBehaviour {
 	public float nextAttack;
 	public float attackRate;
 	public float attackSpeed;
+	public float health;
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Player");
 	}

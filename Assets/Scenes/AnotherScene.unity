@@ -658,6 +658,7 @@ MonoBehaviour:
   nextAttack: 0
   attackRate: 0
   attackSpeed: 0
+  health: 100
   ball: {fileID: 1684734740928392, guid: 2269340afc6684a5484f0dbbe86ae56a, type: 2}
 --- !u!212 &2006639794
 SpriteRenderer:

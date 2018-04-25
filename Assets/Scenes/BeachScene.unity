@@ -1334,6 +1334,12 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114175663394136320, guid: 647c0eb2c96e449389cc4da966512219,
+        type: 2}
+      propertyPath: player_ball
+      value: 
+      objectReference: {fileID: 1894952620050140, guid: cca12ab8336c548b3a7cb71c0e1480a0,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 647c0eb2c96e449389cc4da966512219, type: 2}
   m_IsPrefabParent: 0
