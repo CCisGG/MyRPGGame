@@ -234,7 +234,7 @@ Prefab:
         type: 2}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 171172230}
+      objectReference: {fileID: 171172231}
     m_RemovedComponents:
     - {fileID: 95537398131017190, guid: f3b8f77b5f8114baba0fc136e8348f64, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f3b8f77b5f8114baba0fc136e8348f64, type: 2}
@@ -244,7 +244,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1796064191813006, guid: f3b8f77b5f8114baba0fc136e8348f64,
     type: 2}
   m_PrefabInternal: {fileID: 171172228}
---- !u!95 &171172230
+--- !u!95 &171172231
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ Animator:
   m_GameObject: {fileID: 171172229}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8d45b9a3570d140ee85502b7f8da76a4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6a977c6f9c800411bb9009d3647c62e1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
