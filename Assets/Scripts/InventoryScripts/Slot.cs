@@ -26,6 +26,15 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	// The sprite(image) of the highlighted slot. A lot would be highlighted when mouse pointer move to the slot.
 	public Sprite slotHighlighted;
 
+	void OnSceneLoaded() {
+		Item item = GetComponent<Item> ();
+		Stack<Item> copyItems = new Stack<Item> ();
+		for (int i = 0; i < items.Count; i++) {
+			copyItems.Push (item);
+		}
+		items = copyItems;
+	}
+
 
 	void Start() {
 		items = new Stack<Item> ();
@@ -65,6 +74,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 
 	// AddItem: add a single item to this slot.
 	public void AddItem(Item item) {
+		if (this.GetComponent<Item>() == null) {
+			CopyComponent (item, gameObject);
+		}
 		items.Push (item);
 
 		if (items.Count > 1) {
@@ -132,5 +144,17 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 			return "Slot contains item " + item + " * " + items.Count; 
 		}
 		return "Slot is empty";
+	}
+
+	T CopyComponent<T>(T original, GameObject destination) where T : Component
+	{
+		System.Type type = original.GetType();
+		Component copy = destination.AddComponent(type);
+		System.Reflection.FieldInfo[] fields = type.GetFields();
+		foreach (System.Reflection.FieldInfo field in fields)
+		{
+			field.SetValue(copy, field.GetValue(original));
+		}
+		return copy as T;
 	}
 }

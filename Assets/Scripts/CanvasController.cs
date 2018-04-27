@@ -10,13 +10,12 @@ public class CanvasController : MonoBehaviour {
 	public static CanvasController canvasController;
 
 	void Awake () {
-//		if (canvasController == null) {
-//			DontDestroyOnLoad (gameObject);
-//			canvasController = this;
-//		} else if (canvasController != this) {
-//			Destroy (gameObject);
-//		}
-
+		if (canvasController == null) {
+			DontDestroyOnLoad (gameObject);
+			canvasController = this;
+		} else if (canvasController != this) {
+			Destroy (gameObject);
+		}
 	}
 
 	// Use this for initialization
