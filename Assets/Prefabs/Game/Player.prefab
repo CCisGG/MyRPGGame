@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ade54e18240041bc80d71f13d357520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  player_ball: {fileID: 0}
 --- !u!212 &212685450549755392
 SpriteRenderer:
   m_ObjectHideFlags: 1

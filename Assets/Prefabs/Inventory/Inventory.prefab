@@ -67,12 +67,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69c264de662147f18509e06dacf6a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots: 6
+  slotCount: 0
   rows: 2
   slotPaddingLeft: 2
   slotPaddingTop: 2
   slotSize: 20
-  slotPrefab: {fileID: 1314746707561364, guid: 7a4523a88f4dd48fea40b9e9018ac7e9, type: 2}
 --- !u!222 &222503083483327516
 CanvasRenderer:
   m_ObjectHideFlags: 1
