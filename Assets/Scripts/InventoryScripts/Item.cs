@@ -41,6 +41,11 @@ public abstract class Item : MonoBehaviour, ItemInterface {
 	// Whether the item could be sold (or delete).
 	private bool isSoldable;
 
+	public bool IsSoldable {
+		get { return isSoldable; }
+		set { isSoldable = value; }
+	}
+
 	// Max size of the item.
 	private int maxSize = 30;
 

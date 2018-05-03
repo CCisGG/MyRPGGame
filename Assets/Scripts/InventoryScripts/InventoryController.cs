@@ -74,7 +74,9 @@ public class InventoryController : MonoBehaviour {
 
 	public void Sell() {
 		Debug.Log ("Triggered");
-		GameController.gameController.gold += InventoryController.GetInventoryController().FromSlot.GetCurrentItem().price;
+		GameController.gameController.gold += FromSlot.GetCurrentItem().price;
+		FromSlot.ClearSlot ();
+		FromSlot = null;
 	}
 
 	public void ReturnToPreviousScene(string sceneName) {
