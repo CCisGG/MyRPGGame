@@ -857,6 +857,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114462168275703590, guid: 0564ba5e62ab34eeea6a12c714bc90bf,
+        type: 2}
+      propertyPath: price
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114024346893849586, guid: 0564ba5e62ab34eeea6a12c714bc90bf, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0564ba5e62ab34eeea6a12c714bc90bf, type: 2}
@@ -944,7 +949,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1258169277757736, guid: b181219c931c243e1b224d7eb1895bf3, type: 2}
       propertyPath: m_Name
-      value: Cave (1)
+      value: CaveToStore
       objectReference: {fileID: 0}
     - target: {fileID: 114018660774293080, guid: b181219c931c243e1b224d7eb1895bf3,
         type: 2}
