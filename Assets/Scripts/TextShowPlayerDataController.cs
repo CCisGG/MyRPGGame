@@ -17,6 +17,8 @@ public class TextShowPlayerDataController : MonoBehaviour {
 	void showPlayerData() {
 		GameController controller = GameController.gameController;
 		Text playerDataText = GetComponent<Text> ();
-		playerDataText.text = "health: " + controller.health + "   Exp: " + controller.experience;
+		playerDataText.text = "health: " + controller.health
+						+ "   Exp: " + controller.experience
+						+ "   Gold:" + controller.gold;
 	}
 }
