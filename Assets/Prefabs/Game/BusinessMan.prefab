@@ -127,7 +127,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114265496978662032, guid: fd890dfdd60154bb29ffdaaf2dbeecf6,
+      - m_Target: {fileID: 114345269097722592, guid: a1fef8abbe11247eb9b149c8c8e5a4d2,
           type: 2}
         m_MethodName: Sell
         m_Mode: 1
