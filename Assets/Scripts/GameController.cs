@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 
 	public float health;
 	public float experience;
+	public float gold;
 
 	void Awake () {
 		if (gameController == null) {
