@@ -19,11 +19,15 @@ public class SellingController : MonoBehaviour {
 
 	public void Sell() {
 		Slot fromSlot = InventoryController.GetInventoryController ().FromSlot;
+//		if (fromSlot == null || fromSlot.GetCurrentItem () == null) {
+//			Debug.Log ("Fromslot is null " + fromSlot + " " + fromSlot.GetCurrentItem());
+//			return;
+//		}
 		if (!fromSlot.GetCurrentItem ().IsSoldable) {
 			Debug.Log ("Item " + fromSlot.GetCurrentItem() + " cannot be sold");
 			return;
 		}
-		GameController.gameController.gold += fromSlot.GetCurrentItem().price;
+		GameController.gameController.gold += fromSlot.GetCurrentItem().price * fromSlot.GetItems().Count;
 		fromSlot.ClearSlot();
 		InventoryController.GetInventoryController ().FromSlot = null;
 	}
