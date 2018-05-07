@@ -15,9 +15,11 @@ public class PlayerController : MonoBehaviour {
 	private float nextFire;
 	private Vector3 direction;
 	private float attackSpeed;
-	void Start () {
+    private Animator animator;
+    void Start () {
 		attackSpeed = 10f;
-	}
+        animator = transform.GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -32,14 +34,16 @@ public class PlayerController : MonoBehaviour {
 		}
 		if (Input.GetAxis ("Horizontal") > 0) {
 			direction = new Vector3(1, 0, 0);
-		} else if (Input.GetAxis ("Horizontal") < 0) {
+            animator.SetTrigger("walk");
+        } else if (Input.GetAxis ("Horizontal") < 0) {
 			direction = new Vector3(-1, 0, 0);
 		} else if (Input.GetAxis ("Vertical") > 0) {
 			direction = new Vector3(0, 1, 0);
 		} else if (Input.GetAxis ("Vertical") < 0) {
 			direction = new Vector3(0, -1, 0);
 		}
-		this.transform.position = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0 ) + this.transform.position;
+
+        this.transform.position = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0 ) + this.transform.position;
 	
 		// Only allow one single item in specific range
 		DetectPickUp ();
@@ -62,6 +66,5 @@ public class PlayerController : MonoBehaviour {
 			//			GameObject.Destroy (item);
 		}
 	}
-
 
 }
