@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class InventoryController : MonoBehaviour {
 
@@ -11,6 +12,8 @@ public class InventoryController : MonoBehaviour {
 	public GameObject slotPrefab;
 
 	public Canvas canvas;
+
+	public Scene previousScene;
 
 	private Slot fromSlot, toSlot;
 
@@ -67,5 +70,24 @@ public class InventoryController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void Sell() {
+		Debug.Log ("Triggered");
+		GameController.gameController.gold += FromSlot.GetCurrentItem().price;
+		FromSlot.ClearSlot ();
+		FromSlot = null;
+	}
+
+	public void ReturnToPreviousScene(string sceneName) {
+//		Debug.Log ("Previous Scene name = " + previousScene.name);
+//		if (previousScene.name != null || previousScene.name != "") {
+//			Debug.Log ("Previous Scene = " + previousScene);
+//			SceneManager.LoadScene (previousScene.name);
+//		}
+		if (sceneName != null) {
+			Debug.Log ("sceneName= " + sceneName);
+			SceneManager.LoadScene (sceneName);
+		}
 	}
 }

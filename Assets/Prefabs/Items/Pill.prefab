@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61365836575321978}
   - component: {fileID: 114462168275703590}
   m_Layer: 0
-  m_Name: Peel
+  m_Name: Pill
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
