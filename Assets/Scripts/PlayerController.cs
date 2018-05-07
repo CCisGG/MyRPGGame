@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 		} else if (Input.GetAxis ("Vertical") < 0) {
 			direction = new Vector3(0, -1, 0);
 		}
-		this.transform.position = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0 ) + this.transform.position;
+		this.transform.position = new Vector3(Input.GetAxis("Horizontal")/3, Input.GetAxis("Vertical")/3, 0 ) + this.transform.position;
 	
 		// Only allow one single item in specific range
 		DetectPickUp ();
