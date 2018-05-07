@@ -26,16 +26,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	// The sprite(image) of the highlighted slot. A lot would be highlighted when mouse pointer move to the slot.
 	public Sprite slotHighlighted;
 
-	void OnSceneLoaded() {
-		Item item = GetComponent<Item> ();
-		Stack<Item> copyItems = new Stack<Item> ();
-		for (int i = 0; i < items.Count; i++) {
-			copyItems.Push (item);
-		}
-		items = copyItems;
-	}
-
-
 	void Start() {
 		items = new Stack<Item> ();
 
@@ -50,6 +40,15 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		txtRect.SetSizeWithCurrentAnchors (RectTransform.Axis.Horizontal, slotRect.sizeDelta.x);
 		txtRect.SetSizeWithCurrentAnchors (RectTransform.Axis.Vertical, slotRect.sizeDelta.y);
 
+	}
+
+	void Update() {
+		Item item = GetComponent<Item> ();
+		Stack<Item> copyItems = new Stack<Item> ();
+		for (int i = 0; i < items.Count; i++) {
+			copyItems.Push (item);
+		}
+		items = copyItems;
 	}
 
 	// IsEmpty: Return if the slot has no items.
@@ -90,6 +89,13 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	public void AddItems(Stack<Item> items) {
 		if (items.Count == 0)
 			return;
+		
+		if (GetComponent<Item> () != null) {
+			Destroy (GetComponent<Item> ());
+		}
+
+		CopyComponent (items.Peek(), gameObject);
+
 		this.items = new Stack<Item>(items);
 
 		stackText.text = items.Count > 1 ? items.Count.ToString () : string.Empty;
