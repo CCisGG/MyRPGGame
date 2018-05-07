@@ -21,20 +21,9 @@ public class PinkMonsterController : MonsterController {
 		float y_abs = System.Math.Abs (player_position.y - position.y);
 		double distance = x_abs + y_abs;
 		if (distance < 10) {
-
-			float x_direction = ((player_position.x - position.x) / x_abs) / 5;
-			float y_direction = ((player_position.y - position.y) / y_abs) / 5;
-				//this.transform.position = new Vector3 (x_direction, y_direction, 0) + this.transform.position;
-			if (x_abs > y_abs) {
-				this.transform.position = new Vector3 (-1*x_direction, 0, 0) + this.transform.position;
-			} else {
-				this.transform.position = new Vector3 (0, -1*y_direction, 0) + this.transform.position;
-			}
-
+			this.GetComponent<Rigidbody2D>().AddForce(player_position);
 		}
-	
-
-
+			
 
 	}
 
