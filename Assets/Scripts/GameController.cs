@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour {
 		PlayerData data = new PlayerData ();
 		data.health = health;
 		data.experience = experience;
+        data.gold = gold;
 
 		bf.Serialize (file, data);
 		file.Close();
@@ -50,6 +51,7 @@ public class GameController : MonoBehaviour {
 
 			health = data.health;
 			experience = data.experience;
+            gold = data.gold;
 		}
 
 
@@ -61,4 +63,5 @@ public class GameController : MonoBehaviour {
 class PlayerData {
 	public float health;
 	public float experience;
+    public float gold;
 }

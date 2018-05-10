@@ -10,12 +10,16 @@ public class PlayerController : MonoBehaviour {
 
 	private Collider2D overlapItem;
 
+    private Collider2D overlapNPC;
+
+
 	// Use this for initialization
 	public GameObject player_ball;
 	private float nextFire;
 	private Vector3 direction;
 	private float attackSpeed;
     private Animator animator;
+    private bool dialogueActive;
     void Start () {
 		attackSpeed = 10f;
         animator = transform.GetComponent<Animator>();
@@ -57,19 +61,53 @@ public class PlayerController : MonoBehaviour {
             animator.ResetTrigger("walk");
         }
 
-        this.transform.position += new Vector3(horizontal, vertical, 0 );
+        if (!dialogueActive) {
+            this.transform.position += new Vector3(horizontal, vertical, 0);
+        }
 	
 		// Only allow one single item in specific range
 		DetectPickUp ();
+        DetectDialogTrigger();
+        DetectNextDialogue();
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		overlapItem = other;
+        switch (other.tag) {
+            case "Item":
+                overlapItem = other;
+                break;
+            case "NPC":
+                overlapNPC = other;
+                Debug.Log("Enter NPC " + overlapNPC);
+                break;
+        }
+		
 	}
 
 	void OnTriggerExit2D (Collider2D other) {
-		overlapItem = null;
+        switch (other.tag) {
+            case "Item":
+                overlapItem = null;
+                break;
+            case "NPC":
+                overlapNPC = null;
+                break;
+        }
 	}
+
+    public void DetectDialogTrigger() {
+        if (overlapNPC != null && !dialogueActive && Input.GetKeyDown(KeyCode.Space)) {
+            Debug.Log("Trigger dialog " + overlapNPC);
+            FindObjectOfType<DialogueManager>().StartDialogue(overlapNPC.GetComponent<DialogueTrigger>().dialogue);
+            dialogueActive = true;
+        }
+    }
+
+    public void DetectNextDialogue() {
+        if (dialogueActive && Input.GetKeyDown(KeyCode.Space)) {
+            dialogueActive = FindObjectOfType<DialogueManager>().DisplayNextSentence();
+        }
+    }
 
 	public void DetectPickUp() {
 		if (overlapItem == null || !overlapItem.CompareTag ("Item"))
