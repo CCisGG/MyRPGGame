@@ -22,16 +22,6 @@ public class Inventory : MonoBehaviour {
 
 	private static int emptySlots;
 
-	void Awake () {
-//		if (inventory == null) {
-//			DontDestroyOnLoad (gameObject);
-//			inventory = this;
-//		} else if (inventory != this) {
-//			Destroy (gameObject);
-//		}
-
-	}
-
 	public static int EmptySlots {
 		get { return emptySlots; }
 		set { emptySlots = value; }
@@ -48,14 +38,14 @@ public class Inventory : MonoBehaviour {
 	}
 
 	public String ToString() {
-		if (InventoryController.GetInventoryController ().HoldingSlots == null) {
+        if (InventoryController.Controller.HoldingSlots == null) {
 			return "Null holding slots";
 		}
 		String res = "";
 		for (int i = 0; i < slotCount; i++) {
 			res += " |slot " + i + ": ";
-			if (i < InventoryController.GetInventoryController ().HoldingSlots.Count) {
-				res += InventoryController.GetInventoryController ().HoldingSlots [i].ToString ();
+            if (i < InventoryController.Controller.HoldingSlots.Count) {
+                res += InventoryController.Controller.HoldingSlots [i].ToString ();
 			}
 		}
 		return res;
@@ -80,14 +70,14 @@ public class Inventory : MonoBehaviour {
 		int currentCount = 0;
 		for (int y = 0; y < rows; y++) {
 			for (int x = 0; x < columns; x++) {
-				GameObject slotObject =	(GameObject) Instantiate (InventoryController.GetInventoryController().slotPrefab);
+                GameObject slotObject =	(GameObject) Instantiate (InventoryController.Controller.slotPrefab);
 
-				if (InventoryController.GetInventoryController ().HoldingSlots != null) {
+                if (InventoryController.Controller.HoldingSlots != null) {
 					// Inventory and Slots Existed: 
 					// The "SLOT object (NOT game object)" should be fetched from slot controller
 
 					Slot newSlot = slotObject.GetComponent<Slot> ();
-					Slot oldSlot = InventoryController.GetInventoryController ().HoldingSlots[currentCount];
+                    Slot oldSlot = InventoryController.Controller.HoldingSlots[currentCount];
 					newSlot.AddItems (oldSlot.GetItems());
 				}
 
@@ -103,16 +93,13 @@ public class Inventory : MonoBehaviour {
 				slotRect.anchoredPosition = inventoryRect.anchoredPosition + new Vector2(slotPaddingLeft * (x + 1) + slotSize * x,
 										-slotPaddingTop * (y + 1) - slotSize * y);
 
-//				Debug.Log ("parent postion" + this.transform.parent.position + " " + slotRect.transform.parent.position + " " + inventoryRect.transform.parent.position);
-//				Debug.Log (x + " " + y + " " + slotRect.transform.position + " " + slotRect.localPosition);
-//				Debug.Log (x + " " + y + " " + inventoryRect.transform.position + " " + inventoryRect.localPosition);
 				slotRect.SetSizeWithCurrentAnchors (RectTransform.Axis.Horizontal, slotSize);
 				slotRect.SetSizeWithCurrentAnchors (RectTransform.Axis.Vertical, slotSize);
 				currentCount++;
 
 			}
 		}
-		InventoryController.GetInventoryController().HoldingSlots = newHoldingSlots;
+        InventoryController.Controller.HoldingSlots = newHoldingSlots;
 	}
 
 	// AddItem: add the item to this inventory.
@@ -123,7 +110,7 @@ public class Inventory : MonoBehaviour {
 
 			// Check if any slots has the same item with the current one.
 			// If so, stack them together in one slot.
-			foreach (Slot slot in InventoryController.GetInventoryController().HoldingSlots) {
+            foreach (Slot slot in InventoryController.Controller.HoldingSlots) {
 				if (!slot.IsEmpty ()) {
 					if (slot.GetCurrentItem ().type == item.type && slot.IsAvailable ()) {
 						slot.AddItem (item);
@@ -143,32 +130,32 @@ public class Inventory : MonoBehaviour {
 	// MoveItem: Move item by click. 
 	// 			Note: In Unity page, should add the this controller and this function to click-list; 
 	public void MoveItem(GameObject clicked) {
-		if (InventoryController.GetInventoryController ().FromSlot == null) {
+        if (InventoryController.Controller.FromSlot == null) {
 			Debug.Log ("fromSlot == null");
 			if (!clicked.GetComponent<Slot> ().IsEmpty ()) {
-				InventoryController.GetInventoryController ().FromSlot = clicked.GetComponent<Slot> ();
-				InventoryController.GetInventoryController ().FromSlot.GetComponent<Image> ().color = Color.gray;
+                InventoryController.Controller.FromSlot = clicked.GetComponent<Slot> ();
+                InventoryController.Controller.FromSlot.GetComponent<Image> ().color = Color.gray;
 
 			}
-		} else if (InventoryController.GetInventoryController ().ToSlot == null) {
+        } else if (InventoryController.Controller.ToSlot == null) {
 			Debug.Log ("toSlot == null");
-			InventoryController.GetInventoryController ().ToSlot = clicked.GetComponent<Slot> ();
+            InventoryController.Controller.ToSlot = clicked.GetComponent<Slot> ();
 		} 
 
-		if (InventoryController.GetInventoryController ().FromSlot != null && InventoryController.GetInventoryController ().ToSlot != null){
+        if (InventoryController.Controller.FromSlot != null && InventoryController.Controller.ToSlot != null){
 			Debug.Log ("both != null");
-			Stack<Item> tmpToSlot = new Stack<Item> (InventoryController.GetInventoryController ().ToSlot.GetItems ());
-			InventoryController.GetInventoryController ().ToSlot.AddItems (InventoryController.GetInventoryController ().FromSlot.GetItems());
+            Stack<Item> tmpToSlot = new Stack<Item> (InventoryController.Controller.ToSlot.GetItems ());
+            InventoryController.Controller.ToSlot.AddItems (InventoryController.Controller.FromSlot.GetItems());
 
 			if (tmpToSlot.Count == 0) {
-				InventoryController.GetInventoryController ().FromSlot.ClearSlot ();
+                InventoryController.Controller.FromSlot.ClearSlot ();
 			} else {
-				InventoryController.GetInventoryController ().FromSlot.AddItems (tmpToSlot);
+                InventoryController.Controller.FromSlot.AddItems (tmpToSlot);
 			}
 
-			InventoryController.GetInventoryController ().FromSlot.GetComponent<Image> ().color = Color.white;
-			InventoryController.GetInventoryController ().ToSlot = null;
-			InventoryController.GetInventoryController ().FromSlot = null;
+            InventoryController.Controller.FromSlot.GetComponent<Image> ().color = Color.white;
+            InventoryController.Controller.ToSlot = null;
+            InventoryController.Controller.FromSlot = null;
 		}
 
 
@@ -178,7 +165,7 @@ public class Inventory : MonoBehaviour {
 	// PlaceEmpty: Place an item to an empty slot (Traverse and find empty slots). 
 	private bool PlaceEmpty(Item item) {
 		if (emptySlots > 0) {
-			foreach (Slot slot in InventoryController.GetInventoryController().HoldingSlots) {
+            foreach (Slot slot in InventoryController.Controller.HoldingSlots) {
 				if (slot.IsEmpty ()) {
 					Debug.Log ("Placing empty: " + item);
 					slot.AddItem (item);

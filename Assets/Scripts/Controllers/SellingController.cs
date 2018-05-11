@@ -5,24 +5,32 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SellingController : MonoBehaviour {
+    
+    private static SellingController sellingController;
 
-	SellingController sellingController;
+    public static SellingController Controller
+    {
+        get { return sellingController; }
+    }
 
-	void Awake () {
-		if (sellingController == null) {
-			DontDestroyOnLoad (gameObject);
-			sellingController = this;
-		} else if (sellingController != this) {
-			Destroy (gameObject);
-		}
-
-	}
+    private void Initialize()
+    {
+        if (sellingController == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            sellingController = this;
+        }
+        else if (sellingController != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
 	public void Sell() {
-		Slot fromSlot = InventoryController.GetInventoryController ().FromSlot;
+        Slot fromSlot = InventoryController.Controller.FromSlot;
 		if (fromSlot == null || fromSlot.GetCurrentItem () == null) {
 			Debug.Log ("Fromslot is null");
-			InventoryController.GetInventoryController ().FromSlot = null;
+            InventoryController.Controller.FromSlot = null;
 			return;
 		}
 		if (!fromSlot.GetCurrentItem ().IsSoldable) {
@@ -33,7 +41,7 @@ public class SellingController : MonoBehaviour {
 			Destroy (fromSlot.GetComponent<Item> ());
 		}
 		fromSlot.GetComponent<Image> ().color = Color.white;
-		InventoryController.GetInventoryController ().FromSlot = null;
+        InventoryController.Controller.FromSlot = null;
 		Inventory.EmptySlots++;
 	}
 }

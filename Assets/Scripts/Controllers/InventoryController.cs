@@ -7,7 +7,26 @@ using UnityEngine.SceneManagement;
 
 public class InventoryController : MonoBehaviour {
 
-	private static InventoryController inventoryController;
+    private static InventoryController inventoryController;
+
+    public static InventoryController Controller
+    {
+        get { return inventoryController; }
+    }
+
+    private void Initialize()
+    {
+        if (inventoryController == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            inventoryController = this;
+        }
+        else if (inventoryController != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 
 	public GameObject slotPrefab;
 
@@ -44,32 +63,8 @@ public class InventoryController : MonoBehaviour {
 		set { holdingSlots = value; }
 	}
 
-	public static InventoryController GetInventoryController() {
-		if (inventoryController == null) {
-			inventoryController = FindObjectOfType<InventoryController> ();
-		}
-		return inventoryController;
-	}
-
-
 	void Awake () {
-		if (inventoryController == null) {
-			DontDestroyOnLoad (gameObject);
-			inventoryController = this;
-		} else if (inventoryController != this) {
-			Destroy (gameObject);
-		}
-
-	}
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        Initialize();
 	}
 
 	public void Sell() {
@@ -80,11 +75,6 @@ public class InventoryController : MonoBehaviour {
 	}
 
 	public void ReturnToPreviousScene(string sceneName) {
-//		Debug.Log ("Previous Scene name = " + previousScene.name);
-//		if (previousScene.name != null || previousScene.name != "") {
-//			Debug.Log ("Previous Scene = " + previousScene);
-//			SceneManager.LoadScene (previousScene.name);
-//		}
 		if (sceneName != null) {
 			Debug.Log ("sceneName= " + sceneName);
 			SceneManager.LoadScene (sceneName);

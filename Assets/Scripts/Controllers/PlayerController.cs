@@ -8,12 +8,21 @@ public class PlayerController : MonoBehaviour {
 
     private static PlayerController playerController;
 
-    private void Initialize() {
-        if (playerController == null) {
+    public static PlayerController Controller
+    {
+        get { return playerController; }
+    }
+
+
+    private void Initialize()
+    {
+        if (playerController == null)
+        {
             DontDestroyOnLoad(gameObject);
             playerController = this;
         }
-        else if (playerController != this) {
+        else if (playerController != this)
+        {
             Destroy(gameObject);
         }
     }
