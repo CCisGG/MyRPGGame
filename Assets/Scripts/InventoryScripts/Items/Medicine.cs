@@ -20,6 +20,6 @@ public class Medicine : Item {
 	// Use: use the item. 
 	public override void Use() {
 		Debug.Log ("health item");
-		GameController.gameController.health += addHealth;
+        GameController.Controller.health += addHealth;
 	}
 }

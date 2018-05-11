@@ -28,7 +28,7 @@ public class SellingController : MonoBehaviour {
 		if (!fromSlot.GetCurrentItem ().IsSoldable) {
 			Debug.Log ("Item " + fromSlot.GetCurrentItem () + " cannot be sold");
 		} else {
-			GameController.gameController.gold += fromSlot.GetCurrentItem ().price * fromSlot.GetItems ().Count;
+            GameController.Controller.gold += fromSlot.GetCurrentItem ().price * fromSlot.GetItems ().Count;
 			fromSlot.ClearSlot();
 			Destroy (fromSlot.GetComponent<Item> ());
 		}
