@@ -13,20 +13,31 @@ using System.IO;
 
 public class GameController : MonoBehaviour {
 
-	public static GameController gameController;
+	private static GameController gameController;
+
+    public static GameController Controller {
+        get { return gameController; }
+    }
+
+    private void Initialize()
+    {
+        if (gameController == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            gameController = this;
+        }
+        else if (gameController != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
 	public float health;
 	public float experience;
 	public float gold;
 
 	void Awake () {
-		if (gameController == null) {
-			DontDestroyOnLoad (gameObject);
-			gameController = this;
-		} else if (gameController != this) {
-			Destroy (gameObject);
-		}
-
+        Initialize();
 	}
 	
 	public void Save() {

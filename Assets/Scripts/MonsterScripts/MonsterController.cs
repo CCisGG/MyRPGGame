@@ -35,8 +35,8 @@ public abstract class MonsterController : MonoBehaviour {
 	// Hurt player.
 	public void OnTriggerEnter2D(Collider2D other, int hurt) {
 		if (other.CompareTag ("Player")) {
-			if (GameController.gameController.health >= hurt) {
-				GameController.gameController.health -= hurt;
+            if (GameController.Controller.health >= hurt) {
+                GameController.Controller.health -= hurt;
 			} else {
 				GameObject.Destroy(player);
 			}

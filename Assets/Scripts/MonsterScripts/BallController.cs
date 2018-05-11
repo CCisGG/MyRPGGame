@@ -18,10 +18,10 @@ public class BallController : MonoBehaviour {
 	// Hurt player.
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.CompareTag ("Player")) {
-			if (GameController.gameController.health >= 10) {
-				GameController.gameController.health -= 10;
+			if (GameController.Controller.health >= 10) {
+                GameController.Controller.health -= 10;
 			} else {
-				GameController.gameController.health = 0;
+                GameController.Controller.health = 0;
 			}
 			GameObject explosions = Instantiate (explosion, transform.position, transform.rotation) as GameObject;
 			GameObject.Destroy (gameObject);

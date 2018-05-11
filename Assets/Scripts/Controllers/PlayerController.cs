@@ -6,6 +6,27 @@ using System.Linq;
 
 public class PlayerController : MonoBehaviour {
 
+    private static PlayerController playerController;
+
+    public static PlayerController Controller
+    {
+        get { return playerController; }
+    }
+
+
+    private void Initialize()
+    {
+        if (playerController == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            playerController = this;
+        }
+        else if (playerController != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 	public Inventory inventory;
 
 	private Collider2D overlapItem;
@@ -20,7 +41,12 @@ public class PlayerController : MonoBehaviour {
 	private float attackSpeed;
     private Animator animator;
     private bool dialogueActive;
-    void Start () {
+
+	private void Awake() {
+        Initialize();
+	}
+
+	void Start () {
 		attackSpeed = 10f;
         animator = transform.GetComponent<Animator>();
     }

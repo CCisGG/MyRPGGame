@@ -574,13 +574,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: NPC_test
+    name: test
     sentences:
-    - Test1
-    - Test2
-    - Test3
-    - Test4
-    - Test5
+    - test1
+    - test2
+    - test3
 --- !u!61 &1268858041
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -805,10 +803,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a07d84acb8bc4332afde285da475239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 16
+  type: 0
   price: 0
-  spriteNeutral: {fileID: 21300000, guid: 67b5028a652de473cbbf36ab16a25256, type: 3}
-  spriteHighlighted: {fileID: 21300000, guid: 67b5028a652de473cbbf36ab16a25256, type: 3}
+  spriteNeutral: {fileID: 0}
+  spriteHighlighted: {fileID: 0}
 --- !u!1001 &1840324930
 Prefab:
   m_ObjectHideFlags: 0
