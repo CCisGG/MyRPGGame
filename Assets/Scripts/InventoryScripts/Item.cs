@@ -25,6 +25,8 @@ interface ItemInterface {
 // Abstract parent class Item
 public abstract class Item : MonoBehaviour, ItemInterface {
 
+    public string itemName;
+
 	public ItemType type;
 
 	public int price;

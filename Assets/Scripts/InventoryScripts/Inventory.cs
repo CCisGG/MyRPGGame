@@ -112,7 +112,7 @@ public class Inventory : MonoBehaviour {
 			// If so, stack them together in one slot.
             foreach (Slot slot in InventoryController.Controller.HoldingSlots) {
 				if (!slot.IsEmpty ()) {
-					if (slot.GetCurrentItem ().type == item.type && slot.IsAvailable ()) {
+                    if (slot.GetCurrentItem ().itemName.Equals(item.itemName) && slot.IsAvailable ()) {
 						slot.AddItem (item);
 						Debug.Log (ToString());
 						return true;
