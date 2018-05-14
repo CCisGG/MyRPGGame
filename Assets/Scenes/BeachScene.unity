@@ -161,11 +161,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 945805526}
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
---- !u!1 &936185982 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1378193902208812, guid: 647c0eb2c96e449389cc4da966512219,
-    type: 2}
-  m_PrefabInternal: {fileID: 1840324930}
 --- !u!1001 &945805526
 Prefab:
   m_ObjectHideFlags: 0
@@ -319,6 +314,11 @@ Prefab:
         type: 2}
       propertyPath: m_Size.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114462168275703590, guid: 0564ba5e62ab34eeea6a12c714bc90bf,
+        type: 2}
+      propertyPath: itemName
+      value: SmallPill
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114024346893849586, guid: 0564ba5e62ab34eeea6a12c714bc90bf, type: 2}
@@ -783,6 +783,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114392583910565316, guid: dfb95827989c24de08c502039bebb6e7,
+        type: 2}
+      propertyPath: itemName
+      value: Sword
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114950625995264168, guid: dfb95827989c24de08c502039bebb6e7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: dfb95827989c24de08c502039bebb6e7, type: 2}
@@ -803,6 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a07d84acb8bc4332afde285da475239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemName: 
   type: 0
   price: 0
   spriteNeutral: {fileID: 0}
@@ -958,7 +964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e14715e03f054d33a383a085a26d4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 936185982}
 --- !u!114 &1920089437
 MonoBehaviour:
   m_ObjectHideFlags: 0
