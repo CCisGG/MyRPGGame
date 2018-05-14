@@ -435,6 +435,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114462168275703590, guid: 0564ba5e62ab34eeea6a12c714bc90bf,
+        type: 2}
+      propertyPath: addExperience
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114462168275703590, guid: 0564ba5e62ab34eeea6a12c714bc90bf,
+        type: 2}
+      propertyPath: addHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114462168275703590, guid: 0564ba5e62ab34eeea6a12c714bc90bf,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 0.001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0564ba5e62ab34eeea6a12c714bc90bf, type: 2}
   m_IsPrefabParent: 0
