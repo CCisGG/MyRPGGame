@@ -6,7 +6,7 @@ public class PlayerAnchor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GameObject player = FindObjectOfType<PlayerController>().gameObject;
+        GameObject player = PlayerController.Controller.gameObject;
         player.transform.position = new Vector3(0, 0, 0);
 	}
 	
