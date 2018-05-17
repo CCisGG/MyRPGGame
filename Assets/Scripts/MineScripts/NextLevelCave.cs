@@ -4,7 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class MineSceneManager : MonoBehaviour {
+public class NextLevelCave : MonoBehaviour {
+
+    private void Start()
+    {
+        LevelController.DeactivateCave(this.gameObject);
+    }
+
 
 	// Change scene on collision
 	void OnTriggerEnter2D(Collider2D other) {

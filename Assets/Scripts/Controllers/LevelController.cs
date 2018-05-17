@@ -10,6 +10,8 @@ public class LevelController : MonoBehaviour {
 
     private static int level;
 
+    private static GameObject nextLevelCave;
+
     public int Level {
         get { return level; }
         set { level = value; }
@@ -40,6 +42,16 @@ public class LevelController : MonoBehaviour {
 
 	void Start()
 	{
-        level = 1;
+        level = 0;
 	}
+
+    public static void DeactivateCave(GameObject cave) {
+        nextLevelCave = cave;
+        nextLevelCave.SetActive(false);
+    }
+
+    public static void ActivateCave() {
+        // First Check if next cave still exists
+        if (nextLevelCave != null) { nextLevelCave.SetActive(true); }
+    }
 }

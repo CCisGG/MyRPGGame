@@ -491,6 +491,11 @@ Prefab:
       propertyPath: itemName
       value: SmallPill
       objectReference: {fileID: 0}
+    - target: {fileID: 114462168275703590, guid: 0564ba5e62ab34eeea6a12c714bc90bf,
+        type: 2}
+      propertyPath: price
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0564ba5e62ab34eeea6a12c714bc90bf, type: 2}
   m_IsPrefabParent: 0
