@@ -8,7 +8,8 @@ public class PurpleMonsterController : MonsterController {
 	// Use this for initialization
 	public GameObject ball;
 
-	private int touchHurt;
+	//private int touchHurt;
+
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Player");
 		base.nextAttack = Time.time;
@@ -16,7 +17,7 @@ public class PurpleMonsterController : MonsterController {
         if (attackSpeed == 0f) {
             attackSpeed = 2.5f; // Default
         }
-		touchHurt = 30;
+		base.touchHurt = 30;
 	}
 	
 	// Update is called once per frame
@@ -33,9 +34,12 @@ public class PurpleMonsterController : MonsterController {
 	}
 
 	// Hurt player.
-	void OnTriggerEnter2D(Collider2D other) {
-		base.OnTriggerEnter2D(other,touchHurt);
-	}
+	//void OnTriggerEnter2D(Collider2D other) {
+ //       Debug.Log("touchHurt: " + TouchHurt);
+ //       Debug.Log("attackRate: " + base.attackRate);
+ //       Debug.Log("attackSpeed: " + attackSpeed);
+	//	base.OnTriggerEnter2D(other);
+	//}
 
 
 }

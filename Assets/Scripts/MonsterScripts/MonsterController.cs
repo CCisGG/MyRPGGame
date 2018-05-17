@@ -11,8 +11,16 @@ public abstract class MonsterController : MonoBehaviour {
 	public float attackRate;
 	public float attackSpeed;
 	public float health;
-
+    public int touchHurt;
     protected bool startAttack;
+
+
+    public int TouchHurt
+    {
+        get { return touchHurt; }
+        set { touchHurt = value; }
+    }
+
 
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -64,10 +72,13 @@ public abstract class MonsterController : MonoBehaviour {
     }
 
 	// Hurt player.
-	public void OnTriggerEnter2D(Collider2D other, int hurt) {
+	public void OnTriggerEnter2D(Collider2D other) {
 		if (other.CompareTag ("Player")) {
-            if (GameController.Controller.health >= hurt) {
-                GameController.Controller.health -= hurt;
+            Debug.Log("touchHurt: " + TouchHurt);
+            Debug.Log("attackRate: " + attackRate);
+            Debug.Log("attackSpeed: " + attackSpeed);
+            if (GameController.Controller.health >= touchHurt) {
+                GameController.Controller.health -= touchHurt;
 			} else {
 				GameObject.Destroy(player);
 			}
