@@ -15,9 +15,9 @@ public class PurpleMonsterController : MonsterController {
 		base.nextAttack = Time.time;
 		base.attackRate = 1.5f;
         if (attackSpeed == 0f) {
-            attackSpeed = 2.5f; // Default
+            attackSpeed = 1.5f; // Default
         }
-		base.touchHurt = 30;
+		base.touchHurt = 20;
 	}
 	
 	// Update is called once per frame
@@ -32,14 +32,4 @@ public class PurpleMonsterController : MonsterController {
         base.Move();
 		Attack();
 	}
-
-	// Hurt player.
-	//void OnTriggerEnter2D(Collider2D other) {
- //       Debug.Log("touchHurt: " + TouchHurt);
- //       Debug.Log("attackRate: " + base.attackRate);
- //       Debug.Log("attackSpeed: " + attackSpeed);
-	//	base.OnTriggerEnter2D(other);
-	//}
-
-
 }

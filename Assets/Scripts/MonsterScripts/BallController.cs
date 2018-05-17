@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class BallController : MonoBehaviour {
 
-	// Use this for initialization
+    // Use this for initialization
+    private int attackHurt;
 	public GameObject explosion;
 	void Start () {
 	}
@@ -15,11 +16,17 @@ public class BallController : MonoBehaviour {
 		
 	}
 
+    public int AttackHurt {
+        set { attackHurt = value; }
+        get {return  attackHurt; }
+    }
+
 	// Hurt player.
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.CompareTag ("Player")) {
-			if (GameController.Controller.health >= 10) {
-                GameController.Controller.health -= 10;
+            Debug.Log("attackHurt " + attackHurt);
+            if (GameController.Controller.health >= attackHurt) {
+                GameController.Controller.health -= attackHurt;
 			} else {
                 GameController.Controller.health = 0;
 			}

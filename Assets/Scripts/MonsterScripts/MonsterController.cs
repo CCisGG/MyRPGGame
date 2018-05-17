@@ -6,23 +6,17 @@ using UnityEngine.UI;
 public abstract class MonsterController : MonoBehaviour {
 
 	// Use this for initialization
-	public GameObject player;
 	public float nextAttack;
 	public float attackRate;
 	public float attackSpeed;
 	public float health;
     public int touchHurt;
+    public int attackHurt;
+
     protected bool startAttack;
+    protected GameObject player;
 
-
-    public int TouchHurt
-    {
-        get { return touchHurt; }
-        set { touchHurt = value; }
-    }
-
-
-	void Start () {
+	protected void Start () {
 		player = GameObject.FindGameObjectWithTag("Player");
 	}
 
@@ -30,6 +24,8 @@ public abstract class MonsterController : MonoBehaviour {
 		if (Time.time > nextAttack) {
 			nextAttack = Time.time + attackRate;
 			GameObject balls = Instantiate (ball, transform.position, transform.rotation)as GameObject;
+            balls.GetComponent<BallController>().AttackHurt += attackHurt;
+            Debug.Log("AttackHurt in Monster: " + balls.GetComponent<BallController>().AttackHurt);
 			Vector3 direction = (player.transform.position - this.transform.position);
 			balls.GetComponent<Rigidbody2D> ().velocity = direction * attackSpeed;
 			if (balls != null) {
@@ -39,7 +35,7 @@ public abstract class MonsterController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	private void Update () {
+	protected void Update () {
         Move();
 	}
 
@@ -74,9 +70,6 @@ public abstract class MonsterController : MonoBehaviour {
 	// Hurt player.
 	public void OnTriggerEnter2D(Collider2D other) {
 		if (other.CompareTag ("Player")) {
-            Debug.Log("touchHurt: " + TouchHurt);
-            Debug.Log("attackRate: " + attackRate);
-            Debug.Log("attackSpeed: " + attackSpeed);
             if (GameController.Controller.health >= touchHurt) {
                 GameController.Controller.health -= touchHurt;
 			} else {
