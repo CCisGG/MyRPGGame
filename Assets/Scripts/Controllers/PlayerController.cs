@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			Debug.Log ("Picking up " + overlapItem.GetComponent<Item> ());
 			inventory.AddItem (overlapItem.GetComponent<Item> ());
-			//			GameObject.Destroy (item);
+			Destroy (overlapItem.gameObject);
 		}
 	}
 
