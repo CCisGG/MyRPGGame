@@ -12,6 +12,7 @@ public abstract class MonsterController : MonoBehaviour {
 	public float health;
     public int touchHurt;
     public int attackHurt;
+    public List<GameObject> itemList;
 
     protected bool startAttack;
     protected GameObject player;
@@ -78,4 +79,13 @@ public abstract class MonsterController : MonoBehaviour {
 		}
 
 	}
+
+    public void DropItem() {
+        Debug.Log("Droping item");
+        foreach (GameObject item in itemList) {
+            GameObject thisItem = (GameObject)Instantiate(item);
+            thisItem.transform.position = this.transform.position;
+        }
+
+    }
 }

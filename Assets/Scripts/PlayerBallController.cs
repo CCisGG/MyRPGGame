@@ -19,13 +19,14 @@ public class PlayerBallController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.CompareTag ("Monster")) {
 			GameObject explosions = Instantiate (explosion, transform.position, transform.rotation) as GameObject;
-			GameObject.Destroy (gameObject);
-			GameObject.Destroy (explosions, 0.1f);
+			Destroy (gameObject);
+			Destroy (explosions, 0.1f);
 			MonsterController monster = other.GetComponent<MonsterController> ();
 			if (monster.health > 10) {
 				monster.health -= 20;
 			} else {
-				GameObject.Destroy (other.gameObject);
+                other.GetComponent<MonsterController>().DropItem();
+				Destroy (other.gameObject);
 			}
 		}
 		
