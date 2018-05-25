@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueManager : MonoBehaviour {
+public class DialogueController : MonoBehaviour {
 	public GameObject dialogueBox;
 	public Text nameText;
 	public Text dialogueText;
@@ -11,6 +11,32 @@ public class DialogueManager : MonoBehaviour {
 	public Animator animator;
 	public bool dialogueActive;
 	// Use this for initialization
+
+    private static DialogueController dialogueController;
+
+    public static DialogueController Controller
+    {
+        get { return dialogueController; }
+    }
+
+    private void Initialize()
+    {
+        if (dialogueController == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            dialogueController = this;
+        }
+        else if (dialogueController != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Awake()
+    {
+        Initialize();
+    }
+
 	void Start () {
 		sentences = new Queue<string> ();
 	}

@@ -124,14 +124,14 @@ public class PlayerController : MonoBehaviour {
     public void DetectDialogTrigger() {
         if (overlapNPC != null && !dialogueActive && Input.GetKeyDown(KeyCode.Space)) {
             Debug.Log("Trigger dialog " + overlapNPC);
-            FindObjectOfType<DialogueManager>().StartDialogue(overlapNPC.GetComponent<DialogueTrigger>().dialogue);
+            FindObjectOfType<DialogueController>().StartDialogue(overlapNPC.GetComponent<DialogueTrigger>().dialogue);
             dialogueActive = true;
         }
     }
 
     public void DetectNextDialogue() {
         if (dialogueActive && Input.GetKeyDown(KeyCode.Space)) {
-            dialogueActive = FindObjectOfType<DialogueManager>().DisplayNextSentence();
+            dialogueActive = FindObjectOfType<DialogueController>().DisplayNextSentence();
         }
     }
 
