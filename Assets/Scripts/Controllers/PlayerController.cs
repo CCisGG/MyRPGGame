@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour {
 
 	public Inventory inventory;
 
+    public float moveSpeed;
+
 	private Collider2D overlapItem;
 
     private Collider2D overlapNPC;
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour {
 	private float attackSpeed;
     private Animator animator;
     private bool dialogueActive;
+    private Vector2 movement;
 
 	private void Awake() {
         Initialize();
@@ -53,9 +56,14 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        // get move
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
+ 
+        // 4 - Movement per direction
+        movement = new Vector2(
+            moveSpeed * horizontal,
+            moveSpeed * vertical);
+ 
 
         // Accept the move signal from keyboard "input", and move the position
         if (Input.GetButton ("Fire1") && Time.time > nextFire) {
@@ -88,7 +96,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (!dialogueActive) {
-            this.transform.position += new Vector3(horizontal, vertical, 0);
+            //this.transform.position += new Vector3(horizontal, vertical, 0) * moveSpeed;
         }
 	
 		// Only allow one single item in specific range
@@ -155,6 +163,11 @@ public class PlayerController : MonoBehaviour {
         {
             transform.rotation = Quaternion.Euler(0, -180, 0);
         }
+    }
+
+    void FixedUpdate()
+    {
+        GetComponent<Rigidbody2D>().velocity = movement;
     }
 
 }

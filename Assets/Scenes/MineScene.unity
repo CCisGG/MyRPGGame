@@ -320,12 +320,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 30
   y: 20
---- !u!114 &670546685 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114999389454329004, guid: f3b8f77b5f8114baba0fc136e8348f64,
-    type: 2}
-  m_PrefabInternal: {fileID: 1405918378}
-  m_Script: {fileID: 11500000, guid: b69c264de662147f18509e06dacf6a0f, type: 3}
 --- !u!1001 &797426315
 Prefab:
   m_ObjectHideFlags: 0
@@ -1019,11 +1013,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114175663394136320, guid: 647c0eb2c96e449389cc4da966512219,
-        type: 2}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 670546685}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 647c0eb2c96e449389cc4da966512219, type: 2}
   m_IsPrefabParent: 0

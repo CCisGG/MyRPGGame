@@ -118,7 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ade54e18240041bc80d71f13d357520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  inventory: {fileID: 114550249800280062, guid: 54f500f739688443b9afefbe8a3ac8d6,
+    type: 2}
+  moveSpeed: 10
   player_ball: {fileID: 1894952620050140, guid: cca12ab8336c548b3a7cb71c0e1480a0,
     type: 2}
 --- !u!212 &212685450549755392
