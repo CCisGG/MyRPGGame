@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// EscapeCave is the cave to the original layer. It will reset the level. 
+// When it collision with player.
 public class EscapeCave : MonoBehaviour {
 
     public string sceneName;
