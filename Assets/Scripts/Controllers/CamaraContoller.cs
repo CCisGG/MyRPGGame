@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * The CamaraController to control the view scope for the player.
+ **/
 public class CamaraContoller : MonoBehaviour {
 
     private static CamaraContoller camaraContoller;

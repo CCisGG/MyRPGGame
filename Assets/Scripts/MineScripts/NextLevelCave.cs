@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
+// NextLevelCave which will be used to controller the level when digging mine.
 public class NextLevelCave : MonoBehaviour {
 
     private void Start()

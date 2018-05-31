@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * Dialogue Controller for controlling the Diaglogue between player and NPC.
+ **/
 public class DialogueController : MonoBehaviour {
 	public GameObject dialogueBox;
 	public Text nameText;
@@ -41,6 +44,7 @@ public class DialogueController : MonoBehaviour {
 		sentences = new Queue<string> ();
 	}
 
+    // Update the status for dialogue and dialogue box.
 	void Update() {
 		if (dialogueActive && Input.GetKey(KeyCode.Space)) {
 			dialogueBox.SetActive(false);
@@ -48,12 +52,14 @@ public class DialogueController : MonoBehaviour {
 		}
 	}
 
+    // Show to dialogue box.
 	public void ShowBox(string dialogue) {
 		dialogueActive = true;
 		dialogueBox.SetActive (true);
 		dialogueText.text = dialogue;
 	}
 
+    // Start Dialogue
 	public void StartDialogue(Dialogue dialogue) {
 		animator.SetBool ("isOpen", true);
 		Debug.Log ("Start Dialogue with " + dialogue.name);
@@ -67,8 +73,7 @@ public class DialogueController : MonoBehaviour {
 		//DisplayNextSentence ();
 	}
 
-
-
+    // Diaplay next sentence.
 	public bool DisplayNextSentence() {
 		if (sentences.Count == 0) {
 			EndDialogue ();
@@ -83,6 +88,7 @@ public class DialogueController : MonoBehaviour {
 
 	}
 
+    // show the sentence char by char in the dialogue box.
 	IEnumerator TypeSentence(string sentence) {
 		dialogueText.text = "";
 
@@ -92,7 +98,7 @@ public class DialogueController : MonoBehaviour {
 		}
 	}
 
-
+    // End Dialogue
 	void EndDialogue() {
 		Debug.Log ("End of conversation");
 		animator.SetBool ("isOpen", false);
