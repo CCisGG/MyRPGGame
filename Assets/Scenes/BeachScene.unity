@@ -362,11 +362,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4579935779042040, guid: b181219c931c243e1b224d7eb1895bf3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 94.77734
+      value: 95.651
       objectReference: {fileID: 0}
     - target: {fileID: 4579935779042040, guid: b181219c931c243e1b224d7eb1895bf3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -8.409258
+      value: -8.536
       objectReference: {fileID: 0}
     - target: {fileID: 4579935779042040, guid: b181219c931c243e1b224d7eb1895bf3, type: 2}
       propertyPath: m_LocalPosition.z
@@ -400,6 +400,20 @@ Prefab:
         type: 2}
       propertyPath: sceneName
       value: StoreScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 212640381475193070, guid: b181219c931c243e1b224d7eb1895bf3,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fe16ee141da374ae2a4739f0888f749d,
+        type: 3}
+    - target: {fileID: 4579935779042040, guid: b181219c931c243e1b224d7eb1895bf3, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.598061
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579935779042040, guid: b181219c931c243e1b224d7eb1895bf3, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.65862703
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b181219c931c243e1b224d7eb1895bf3, type: 2}
