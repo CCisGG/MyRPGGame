@@ -343,7 +343,7 @@ Prefab:
     - target: {fileID: 114018660774293080, guid: b181219c931c243e1b224d7eb1895bf3,
         type: 2}
       propertyPath: sceneName
-      value: AnotherScene
+      value: ForestScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b181219c931c243e1b224d7eb1895bf3, type: 2}
